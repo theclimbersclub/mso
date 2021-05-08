@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/ruby-rails
+{
+  "name": "MSO Rails",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "rebornix.Ruby",
+    "castwide.solargraph",
+    "kaiwood.endwise",
+    "bung87.rails",
+    "connorshea.vscode-ruby-test-adapter",
+    "pucelle.run-on-save",
+    "mutantdino.resourcemonitor"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000],
+
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "PATH": "./bin:${containerEnv:PATH}"
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "echo '** consider running init-container.sh, which will prepare the environment **'"
+}
