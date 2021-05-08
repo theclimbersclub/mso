@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
 
   match "queue-latency" => proc {
-                             [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.latency < 30 ? "OK" : "UHOH"]]
-                           }, :via => :get
+    [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.latency < 30 ? "OK" : "UHOH"]]
+  }, :via => :get
 
   root "pages#index"
 end
