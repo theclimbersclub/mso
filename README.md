@@ -14,6 +14,8 @@ An installed system provides club members and officers a web based & mobile comp
 
 Well established technology and solutions around the language of Ruby.
 
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
+
 ### Back-end
 
 - [PostgreSQL](https://www.postgresql.org/)
