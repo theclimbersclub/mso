@@ -2,8 +2,8 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/ruby-rails
 {
   "name": "MSO Rails",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
 
@@ -20,11 +20,12 @@
     "bung87.rails",
     "connorshea.vscode-ruby-test-adapter",
     "pucelle.run-on-save",
+    "mtxr.sqltools",
     "mutantdino.resourcemonitor"
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [3000],
+  // "forwardPorts": [8000, 3000],
 
   "remoteUser": "vscode",
   "remoteEnv": {

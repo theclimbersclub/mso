@@ -1,17 +1,15 @@
 # [Choice] Ruby version: 2, 2.7, 2.6, 2.5
 ARG VARIANT=2.7
-FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT}
+FROM mcr.microsoft.com/vscode/devcontainers/ruby:0-${VARIANT} AS app
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 ENV BUNDLE_SILENCE_ROOT_WARNING stfu
 # Spring in Rails is supposed to make development faster but it is not reliable
 ENV DISABLE_SPRING 1
 
-
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-
 
 # Default value to allow debug server to serve content over GitHub Codespace's port forwarding service
 # The value is a comma-separated list of allowed domains
@@ -40,7 +38,6 @@ RUN apt-get update \
     && echo "deb https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
     && apt-get -y install --no-install-recommends yarn \
-
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     # && groupadd --gid $USER_GID $USERNAME \
     # && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
