@@ -1,36 +1,65 @@
 version: "3"
+
+x-app: &default-app
+  build:
+    context: "."
+    dockerfile: .devcontainer/Dockerfile
+    target: "app"
+    args:
+      - "RAILS_ENV=${RAILS_ENV:-production}"
+      - "NODE_ENV=${NODE_ENV:-production}"
+  depends_on:
+    - "postgres"
+    - "redis"
+  environment:
+    BUNDLE_PATH: vendor/bundle
+  env_file:
+    - ".env"
+  restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+  stop_grace_period: "3s"
+  tty: true
+  volumes:
+    - "${DOCKER_WEB_VOLUME:-./public:/workspace/public}"
+
 services:
-  app:
-    build:
-      context: .
-      dockerfile: .devcontainer/Dockerfile
-
-    volumes:
-      - .:/workspace:cached
-    env_file:
-      - ".env"
-    network_mode: service:redis
-    command: sleep infinity
-    environment:
-      BUNDLE_PATH: vendor/bundle
-
   redis:
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_REDIS_CPUS:-0}"
+          memory: "${DOCKER_REDIS_MEMORY:-0}"
     env_file:
       - ".env"
     image: "redis:6.0.10-buster"
-    restart: "unless-stopped"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
     stop_grace_period: "3s"
     volumes:
       - "redis:/data"
-  db:
-    image: postgres
-    restart: unless-stopped
-    volumes:
-      - postgres:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+
+  postgres:
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_POSTGRES_CPUS:-0}"
+          memory: "${DOCKER_POSTGRES_MEMORY:-0}"
     env_file:
       - ".env"
+    image: "postgres:13.2"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
+
+  web:
+    <<: *default-app
+    deploy:
+      resources:
+        limits:
+          cpus: "${DOCKER_WEB_CPUS:-0}"
+          memory: "${DOCKER_WEB_MEMORY:-0}"
+    command: sleep infinity
+    ports:
+      - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:3000}:3000"
 
 volumes:
   redis: {}
