@@ -38,6 +38,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "rspec-rails", "~> 5.0.0"
   gem "standard"
+  gem "bundler-audit"
 end
 
 group :development do
