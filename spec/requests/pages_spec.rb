@@ -8,6 +8,7 @@ RSpec.describe "Pages", type: :request do
       get "/"
 
       expect(response).to have_http_status(:success)
+      expect(response.body).to include("Welcome")
     end
   end
 end

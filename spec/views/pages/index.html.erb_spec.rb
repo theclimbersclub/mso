@@ -3,5 +3,11 @@
 require "rails_helper"
 
 RSpec.describe "pages/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "when not signed in" do
+    it "displays the welcome" do
+      render
+
+      expect(rendered).to match(/Sign up/)
+    end
+  end
 end
