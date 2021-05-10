@@ -21,6 +21,7 @@
     "connorshea.vscode-ruby-test-adapter",
     "pucelle.run-on-save",
     "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
     "mutantdino.resourcemonitor"
   ],
 
