@@ -69,7 +69,7 @@ services:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:3000}:3000"
   worker:
     <<: *default-app
-    command: "/workspace/bin/sidekiq -C config/sidekiq.yml"
+    command: "/workspace/bin/sidekiq -C /workspace/config/sidekiq.yml"
     deploy:
       resources:
         limits:
