@@ -96,9 +96,24 @@ Running the test suite in guard mode:
 guard
 ```
 
-Checking your code for code standards:
+Checking your code for code standards, this is run on CI too:
 ```sh
 standardrb
+```
+
+Checking for code smells, this is run on CI too:
+```sh
+reek
+```
+
+Checking for bundle gem advisories, this is run on CI too:
+```sh
+bundler-audit --update
+```
+
+Checking for vulnerability, this is run CI too:
+```sh
+brakeman -q -w2
 ```
 
 #### Email testing
