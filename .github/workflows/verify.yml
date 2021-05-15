@@ -107,3 +107,8 @@ jobs:
           REDIS_PROVIDER: redis://localhost:6379/1
           DATABASE_URL: postgres://postgres:postgres@localhost/mso_test
         run: bin/rspec
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/
