@@ -33,6 +33,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "sidekiq", "~>6.0.0"
 gem "devise"
 gem "devise-pwned_password", "~> 0.1.9"
+gem "administrate"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -67,6 +68,10 @@ group :test do
   gem "rails-controller-testing"
   gem "shoulda-matchers", "~> 4.0"
   gem "rspec-sidekiq"
+  gem "capybara"
+  gem "selenium-webdriver"
+  # gem 'apparition'
+  gem "selenium-webdriver"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

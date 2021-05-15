@@ -1,23 +1,22 @@
 require "rails_helper"
-RSpec.describe "Adminstrate Web" do
+RSpec.describe "Sidekiq Web" do
   it "isnt available to guests" do
-    get admin_root_path
+    get sidekiq_web_path
     expect(response).to redirect_to("/users/sign_in")
   end
 
-  it "isnt available to an ordinary user" do
+  it "isnt available to users" do
     user = create(:user)
     user.confirm
     sign_in user
-    get admin_root_path
-    expect(response).to redirect_to("/")
+    expect { get sidekiq_web_path }.to raise_error(ActionController::RoutingError)
   end
 
-  it "is available to a super admin user" do
+  it "is available to admin" do
     admin = create(:admin)
     admin.confirm
     sign_in admin
-    get admin_root_path
+    get sidekiq_web_path
     expect(response).to have_http_status(:success)
   end
 end
