@@ -28,4 +28,9 @@ RSpec.describe "Sessions" do
     get root_path
     expect(response.body).to include("Log out")
   end
+
+  it "use devise default current user in a devise controller" do
+    get new_user_session_path
+    expect(controller.current_user).to eq(nil)
+  end
 end

@@ -42,6 +42,7 @@ group :development, :test do
   gem "standard"
   gem "reek"
   gem "bundler-audit"
+  gem "simplecov", require: false
 end
 
 group :development do
@@ -65,6 +66,7 @@ group :test do
   gem "factory_trace"
   gem "rails-controller-testing"
   gem "shoulda-matchers", "~> 4.0"
+  gem "rspec-sidekiq"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
