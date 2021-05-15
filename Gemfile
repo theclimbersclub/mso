@@ -56,6 +56,7 @@ group :development do
   gem "guard-brakeman", require: false
   gem "guard-rspec", require: false
   gem "guard-livereload", "~> 2.5", require: false
+  gem "solargraph"
 end
 
 group :test do
