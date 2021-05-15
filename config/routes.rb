@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   end
 
   match "/monitoring/queue-latency" => proc {
-
-  match "queue-latency" => proc {
     [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.latency < 30 ? "OK" : "UHOH"]]
   }, :via => :get
 
