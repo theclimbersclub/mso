@@ -80,5 +80,5 @@ Rails.application.configure do
   # localhost in Docker since Docker runs containers on its own local network.
   config.web_console.allowed_ips = ENV.fetch("WEB_CONSOLE_ALLOWED_IPS", "172.0.0.0/8").split(",")
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: ENV['PORT'] }
+  config.action_mailer.default_url_options = {host: "localhost", port: ENV["PORT"]}
 end
