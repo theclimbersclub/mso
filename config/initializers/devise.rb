@@ -308,4 +308,12 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  # ==> Have I Been Pwned
+  # https://github.com/michaelbanfield/devise-pwned_password
+  # Minimum number of times a pwned password must exist in the data set in order
+  # to warn the user.
+  config.min_password_matches_warn = 1
+  config.pwned_password_open_timeout = 1
+  config.pwned_password_read_timeout = 2
 end

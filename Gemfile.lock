@@ -81,6 +81,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-pwned_password (0.1.9)
+      devise (~> 4)
+      pwned (~> 2.0.0)
     diff-lcs (1.4.4)
     em-websocket (0.5.2)
       eventmachine (>= 0.12.9)
@@ -167,6 +170,7 @@ GEM
       pry (~> 0.13.0)
     puma (5.3.0)
       nio4r (~> 2.0)
+    pwned (2.0.2)
     racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (2.3.2)
@@ -317,6 +321,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   devise
+  devise-pwned_password (~> 0.1.9)
   factory_bot_rails
   factory_trace
   guard
