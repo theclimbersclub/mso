@@ -50,6 +50,13 @@ services:
     volumes:
       - "postgres:/var/lib/postgresql/data"
 
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - 1025:1025
+      - 8025:8025
+
   web:
     <<: *default-app
     deploy:

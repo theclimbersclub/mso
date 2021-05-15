@@ -81,4 +81,10 @@ Rails.application.configure do
   config.web_console.allowed_ips = ENV.fetch("WEB_CONSOLE_ALLOWED_IPS", "172.0.0.0/8").split(",")
 
   config.action_mailer.default_url_options = {host: "localhost", port: ENV["PORT"]}
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("MAIL_HOST", "localhost"),
+    port: ENV.fetch("MAIL_PORT", 1025)
+  }
 end
