@@ -6,8 +6,11 @@ require "sidekiq/api"
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   devise_for :users
+  authenticate :user, ->(user) { user.super_admin? } do
+    mount Sidekiq::Web => "/admin/sidekiq"
+  end
 
-  mount Sidekiq::Web => "/sidekiq" # mount Sidekiq::Web in your Rails app
+  match "/monitoring/queue-latency" => proc {
 
   match "queue-latency" => proc {
     [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.latency < 30 ? "OK" : "UHOH"]]
