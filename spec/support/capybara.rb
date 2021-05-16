@@ -1,5 +1,7 @@
 require "selenium/webdriver"
 
+Capybara.default_max_wait_time = 10
+
 Capybara.register_driver :chrome_headless do |app|
   chrome_capabilities = ::Selenium::WebDriver::Remote::Capabilities.chrome("goog:chromeOptions" => {args: %w[no-sandbox headless disable-gpu window-size=1400,1400]})
 
