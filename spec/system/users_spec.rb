@@ -9,7 +9,7 @@ RSpec.describe "Adminstrate Users", type: :system do
   it "updates user without password" do
     user = create(:user)
     visit edit_admin_user_path(user)
-    expect(page).to have_text(user.email)
+    expect(page).to have_text("Edit User ##{user.id}")
     click_on "Update User"
 
     expect(page).to have_text("User was successfully updated")

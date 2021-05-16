@@ -106,11 +106,13 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost/mso_test
         run: bin/rspec
       - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
         with:
           name: screenshots
           path: /home/runner/work/mso/mso/tmp/screenshots/
 
       - uses: actions/upload-artifact@v2
+        if: ${{ success() }}
         with:
           name: coverage
           path: coverage/
