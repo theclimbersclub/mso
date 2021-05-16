@@ -66,6 +66,10 @@ jobs:
           --health-retries 5
         ports:
           - 6379:6379
+      chrome:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
 
     steps:
       - name: Checkout code
@@ -106,6 +110,7 @@ jobs:
           RAILS_ENV: test
           REDIS_PROVIDER: redis://localhost:6379/1
           DATABASE_URL: postgres://postgres:postgres@localhost/mso_test
+          HUB_URL: http://localhost:4444/wd/hub
         run: bin/rspec
 
       - uses: actions/upload-artifact@v2
