@@ -70,8 +70,6 @@ group :test do
   gem "rspec-sidekiq"
   gem "capybara"
   gem "selenium-webdriver"
-  # gem 'apparition'
-  gem "selenium-webdriver"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
