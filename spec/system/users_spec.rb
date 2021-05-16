@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Adminstrate Users", type: :feature do
+RSpec.describe "Adminstrate Users", type: :system do
   before do
     admin = create(:admin)
     admin.confirm
@@ -26,7 +26,7 @@ RSpec.describe "Adminstrate Users", type: :feature do
     expect(page).to have_text("User was successfully updated")
   end
 
-  it "update fails user with mis typed password" do
+  it "update fails user with mis-typed password" do
     user = create(:user)
     visit edit_admin_user_path(user)
     fill_in "Password", with: "password"
@@ -38,16 +38,42 @@ RSpec.describe "Adminstrate Users", type: :feature do
   end
 
   describe "filters", js: true do
-    describe "confirmed" do
+    describe "confirmed:" do
       it "filters out unconfirmed users" do
         user = create(:user)
         user.confirm
         unconfirmed_user = create(:user)
         visit admin_users_path
-        fill_in "Search", with: "connfirmed:"
+        fill_in "Search", with: "confirmed:"
         submit_search
         expect(page).to have_content(user.email)
         expect(page).not_to have_content(unconfirmed_user.email)
+      end
+    end
+
+    describe "confirmed:" do
+      it "filters out confirmed users" do
+        user = create(:user)
+        user.confirm
+        unconfirmed_user = create(:user)
+        visit admin_users_path
+        fill_in "Search", with: "unconfirmed:"
+        submit_search
+        expect(page).to have_content(unconfirmed_user.email)
+        expect(page).not_to have_content(user.email)
+      end
+    end
+
+    describe "super_admin:" do
+      it "filters out confirmed users" do
+        user = create(:user)
+        user.confirm
+        admin_user = create(:admin)
+        visit admin_users_path
+        fill_in "Search", with: "super_admin:"
+        submit_search
+        expect(page).to have_content(admin_user.email)
+        expect(page).not_to have_content(user.email)
       end
     end
   end

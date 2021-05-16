@@ -57,6 +57,11 @@ services:
       - 1025:1025
       - 8025:8025
 
+  chrome:
+    image: selenium/standalone-chrome
+    volumes:
+      - ${DOCKER_WEB_VOLUME}
+
   web:
     <<: *default-app
     deploy:
@@ -67,6 +72,11 @@ services:
     command: sleep infinity
     ports:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:3000}:3000"
+    environment:
+      HUB_URL: http://chrome:4444/wd/hub # <-- Add the HUB_URL environment variable
+    depends_on:
+      - chrome
+
   worker:
     <<: *default-app
     command: "/workspace/bin/sidekiq -C /workspace/config/sidekiq.yml"
