@@ -121,9 +121,11 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-guard :brakeman, run_on_start: true do
-  watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
-  watch(%r{^config/.+\.rb$})
-  watch(%r{^lib/.+\.rb$})
-  watch("Gemfile")
+if ENV.fetch("BRAKEMAN_DEV", false)
+  guard :brakeman, run_on_start: true do
+    watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
+    watch(%r{^config/.+\.rb$})
+    watch(%r{^lib/.+\.rb$})
+    watch("Gemfile")
+  end
 end
