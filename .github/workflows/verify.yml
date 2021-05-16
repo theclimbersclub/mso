@@ -98,7 +98,7 @@ jobs:
         run: |
           yarn install --pure-lockfile
       - name: Install chrome-driver
-      - uses: nanasess/setup-chromedriver@master
+        uses: nanasess/setup-chromedriver@master
       - name: Setup test database
         env:
           RAILS_ENV: test
