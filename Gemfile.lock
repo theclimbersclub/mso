@@ -73,6 +73,11 @@ GEM
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
     ast (2.4.2)
+    authtrail (0.3.1)
+      activerecord (>= 5.2)
+      geocoder
+      railties (>= 5.2)
+      warden
     backport (1.1.2)
     bcrypt (3.1.16)
     benchmark (0.1.1)
@@ -126,6 +131,7 @@ GEM
       factory_bot (>= 4.0)
     ffi (1.15.0)
     formatador (0.2.5)
+    geocoder (1.6.7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     guard (2.16.2)
@@ -408,6 +414,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  authtrail
   bootsnap (>= 1.4.4)
   brakeman
   bundler-audit

@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.describe "Adminstrate Users", type: :system do
+RSpec.describe "Adminstrate Users", type: :system, js: true do
   before do
     admin = create(:admin)
     admin.confirm

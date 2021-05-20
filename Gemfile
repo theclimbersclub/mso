@@ -33,6 +33,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "sidekiq", "~>6.0.0"
 gem "devise"
 gem "devise-pwned_password", "~> 0.1.9"
+gem "authtrail"
 gem "administrate"
 
 group :development, :test do

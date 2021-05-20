@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+  it { should have_many(:login_activities)}
+
   describe "#email" do
     it { should validate_presence_of(:email) }
     it { should_not allow_value("blah").for(:email) }
