@@ -34,6 +34,7 @@ gem "sidekiq", "~>6.0.0"
 gem "devise"
 gem "devise-pwned_password", "~> 0.1.9"
 gem "authtrail"
+gem "maxminddb"
 gem "administrate"
 
 group :development, :test do

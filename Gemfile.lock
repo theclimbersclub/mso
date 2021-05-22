@@ -198,6 +198,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
+    maxminddb (0.1.22)
     memory_profiler (1.0.0)
     method_source (1.0.0)
     mini_mime (1.0.3)
@@ -432,6 +433,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  maxminddb
   memory_profiler
   pg (~> 1.1)
   pry-byebug
