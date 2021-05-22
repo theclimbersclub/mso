@@ -12,4 +12,15 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
     current_user.is_a? User
   end
+
+  def login_history
+    current_user.login_activities
+  end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    dashboard_index_path
+  end
+
 end

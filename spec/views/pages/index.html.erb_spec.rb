@@ -15,6 +15,7 @@ RSpec.describe "pages/index.html.erb", type: :view do
     let(:user) { create(:user) }
 
     before do
+      assign(:payload, { login_history: [] })
       user.confirm
       sign_in user
     end

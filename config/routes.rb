@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     [200, {"Content-Type" => "text/plain"}, [Sidekiq::Queue.new.latency < 30 ? "OK" : "UHOH"]]
   }, :via => :get
 
+  resources :dashboard, only: [:index]
   root "pages#index"
 end
