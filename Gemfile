@@ -55,6 +55,8 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"
+  # For memory profiling
+  gem "memory_profiler"
   gem "guard"
   gem "guard-bundler", require: false
   gem "guard-brakeman", require: false
