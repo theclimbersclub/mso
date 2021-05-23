@@ -31,6 +31,12 @@ gem "jbuilder", "~> 2.7"
 gem "bootsnap", ">= 1.4.4", require: false
 
 gem "sidekiq", "~>6.0.0"
+gem "devise"
+gem "devise-pwned_password", "~> 0.1.9"
+gem "authtrail"
+gem "maxminddb"
+gem "administrate"
+gem "rack-attack"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -38,7 +44,9 @@ group :development, :test do
   gem "pry-byebug"
   gem "rspec-rails", "~> 5.0.0"
   gem "standard"
+  gem "reek"
   gem "bundler-audit"
+  gem "simplecov", require: false
 end
 
 group :development do
@@ -49,17 +57,27 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"
+  # For memory profiling
+  gem "memory_profiler"
   gem "guard"
   gem "guard-bundler", require: false
   gem "guard-brakeman", require: false
   gem "guard-rspec", require: false
   gem "guard-livereload", "~> 2.5", require: false
+  gem "solargraph"
+  gem "foreman"
 end
 
 group :test do
-  gem "factory_bot"
+  gem "factory_bot_rails"
   gem "factory_trace"
+  gem "rails-controller-testing"
+  gem "shoulda-matchers", "~> 4.0"
+  gem "rspec-sidekiq"
+  gem "capybara"
+  gem "capybara-screenshot"
+  gem "selenium-webdriver"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

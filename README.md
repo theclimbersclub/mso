@@ -70,3 +70,57 @@ going to download a few Docker images and build the Ruby + Yarn et al dependenci
 ```sh
 .devcontainer/docker-compose up --build
 ```
+
+#### Development & testing
+
+Once built and your vscode editor is attached you can run the terminal, eg `rails s`
+
+Running a local web server:
+```sh
+rails s -b 0.0.0.0
+```
+_the binding of 0.0.0.0 permits the always port forward 3000 to 3000, rails defaults_
+
+Runnig the test suite:
+```sh
+rspec
+```
+
+Running a development console:
+```sh
+rails c
+```
+
+Running the test suite in guard mode:
+```sh
+guard
+```
+
+Checking your code for code standards, this is run on CI too:
+```sh
+standardrb
+```
+
+Checking for code smells, this is run on CI too:
+```sh
+reek
+```
+
+Checking for bundle gem advisories, this is run on CI too:
+```sh
+bundler-audit --update
+```
+
+Checking for vulnerability, this is run CI too:
+```sh
+brakeman -q -w2
+```
+
+Running foreman to start up rails and webpacker dev server
+```sh
+foreman start
+```
+
+#### Email testing
+
+There is an instance of `Mailhog` running, it's available on `localhost:8025`

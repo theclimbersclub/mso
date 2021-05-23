@@ -13,6 +13,20 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+require "simplecov"
+SimpleCov.start do
+  add_filter "/spec/"
+  add_filter "/config/"
+  add_filter "/vendor/"
+
+  add_group "Channels", "app/channels"
+  add_group "Controllers", "app/controllers"
+  add_group "Helpers", "app/helpers"
+  add_group "Jobs", "app/jobs"
+  add_group "Mailers", "app/mailers"
+  add_group "Models", "app/models"
+  add_group "Lib", "lib"
+end
 
 ENV["RAILS_ENV"] = "test"
 #

@@ -51,7 +51,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN gem install rake ruby-debug-ide debase rails webdrivers rufo solargraph
-
+CMD export PATH=./bin:$PATH
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 

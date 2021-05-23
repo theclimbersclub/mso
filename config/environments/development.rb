@@ -79,4 +79,12 @@ Rails.application.configure do
   # Enable the web-console for these IPs. This can't use the default value of
   # localhost in Docker since Docker runs containers on its own local network.
   config.web_console.allowed_ips = ENV.fetch("WEB_CONSOLE_ALLOWED_IPS", "172.0.0.0/8").split(",")
+
+  config.action_mailer.default_url_options = {host: "localhost", port: ENV.fetch("PORT", 3000)}
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch("MAIL_HOST", "localhost"),
+    port: ENV.fetch("MAIL_PORT", 1025)
+  }
 end

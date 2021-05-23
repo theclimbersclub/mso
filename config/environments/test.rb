@@ -9,6 +9,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.hosts << "www.example.com"
+  config.hosts << IPSocket.getaddress(Socket.gethostname)
 
   # Settings specified here will take precedence over those in config/application.rb.
   config.cache_classes = true
@@ -59,4 +60,6 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.action_mailer.default_url_options = {host: "www.example.com", port: ENV["PORT"]}
 end
