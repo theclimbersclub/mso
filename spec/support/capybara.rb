@@ -16,9 +16,13 @@ Capybara.register_driver :chrome_headless do |app|
       desired_capabilities: chrome_capabilities)
   end
 end
-# ...
+
 RSpec.configure do |config|
   config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
     driven_by :chrome_headless
 
     Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}:4000"

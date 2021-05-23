@@ -75,6 +75,7 @@ group :test do
   gem "shoulda-matchers", "~> 4.0"
   gem "rspec-sidekiq"
   gem "capybara"
+  gem "capybara-screenshot"
   gem "selenium-webdriver"
 end
 
