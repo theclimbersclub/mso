@@ -130,6 +130,7 @@ GEM
     factory_trace (0.4.1)
       factory_bot (>= 4.0)
     ffi (1.15.0)
+    foreman (0.87.2)
     formatador (0.2.5)
     geocoder (1.6.7)
     globalid (0.4.2)
@@ -188,6 +189,8 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     kwalify (0.7.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -428,6 +431,7 @@ DEPENDENCIES
   devise-pwned_password (~> 0.1.9)
   factory_bot_rails
   factory_trace
+  foreman
   guard
   guard-brakeman
   guard-bundler

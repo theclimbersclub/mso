@@ -116,6 +116,11 @@ Checking for vulnerability, this is run CI too:
 brakeman -q -w2
 ```
 
+Running foreman to start up rails and webpacker dev server
+```sh
+foreman start
+```
+
 #### Email testing
 
 There is an instance of `Mailhog` running, it's available on `localhost:8025`

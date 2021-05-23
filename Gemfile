@@ -65,6 +65,7 @@ group :development do
   gem "guard-rspec", require: false
   gem "guard-livereload", "~> 2.5", require: false
   gem "solargraph"
+  gem "foreman"
 end
 
 group :test do
